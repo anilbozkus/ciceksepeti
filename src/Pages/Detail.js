@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import Typography from '@material-ui/core/Typography';
 import menuIcon from "../static/icon/menu-icon.svg";
 import productIcon from "../static/icon/product-icon.svg";
@@ -137,6 +138,7 @@ export default function Detail() {
           </Grid>
         </Grid>
       </Grid>
+      <Footer />
     </>
   );
 }

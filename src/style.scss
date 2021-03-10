@@ -20,6 +20,7 @@ body{
     display: flex;
     justify-content: center;
 }
+
 .header{
     display: flex;
     width: 100%;
@@ -97,6 +98,7 @@ body{
         }
     }
 }
+
 .blue-field{
     display: flex;
     width: 100%;
@@ -239,6 +241,7 @@ body{
         }
     }
 }
+
 .info-grid{
     width: 100%;
     background: $primary-color;
@@ -267,7 +270,6 @@ body{
         flex-wrap: nowrap;
     }
     .info-content {
-
         .info-content__text {
             padding-left: 15px;
             padding-top: 5px;
@@ -294,6 +296,49 @@ body{
             @media (min-width: $x-large-screen) {
                 margin-left: 35px;
             }
+        }
+    }
+}
+.footer{
+    background: #F2F2F2 0% 0% no-repeat padding-box;
+    margin-top: 100px;
+    
+    .footer-grid{
+        width: 100%;
+        @media (max-width: $mobile-screen) {
+            padding: 12px
+        }
+        @media (min-width: $tablet-screen) {
+            padding: 10px 80px;
+        }
+        @media (min-width: $medium-screen) {
+            padding: 150px 120px;
+        }
+        @media (min-width: $x-large-screen) {
+            padding: 150px 220px;
+        }
+        
+        .white-grid{
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 111px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .phone-photo{
+            margin-top: -150px;
+        }
+        .qr-title{
+            font-size: 18px;
+            color: #000000;
+            font-family: 'Source Sans Pro', regular;
+            font-weight: 600;
+        }
+        .app-grid{
+            width: max-content;
+            margin-left: 10px;
+            margin-top: 25px;
         }
     }
 }
