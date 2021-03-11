@@ -167,7 +167,7 @@ body{
             transition: 0.5s;
 
             .category-item__box{
-                width: 184px;
+                width: 195px;
                 height: 50px;
                 border: 1px solid #E2E7E9;
                 border-radius: 10px;
@@ -213,12 +213,14 @@ body{
                     font-size: 15px;
                     font-family: 'Source Sans Pro', regular;
                     font-weight: 600;
+                    min-height: 42px;
                 }
                 .category-item__status{
                     color: #51B549;
                     font-size: 15px;
                     font-family: 'Source Sans Pro', regular;
                     font-weight: 600;
+                    min-height: 20px;
                 }
                 .category-item__price{
                     color: #000000;
@@ -312,10 +314,10 @@ body{
             padding: 10px 80px;
         }
         @media (min-width: $medium-screen) {
-            padding: 150px 120px;
+            padding: 150px 120px 60px 120px;
         }
         @media (min-width: $x-large-screen) {
-            padding: 150px 220px;
+            padding: 150px 220px 60px 120px;
         }
         
         .white-grid{
@@ -340,5 +342,53 @@ body{
             margin-left: 10px;
             margin-top: 25px;
         }
+        .apple-img{
+            max-width: 175px;
+        }
+        .footer-left{
+            @media (min-width: $tablet-screen) {
+                border-right: 1px dashed #9B9B9B;
+            }
+            padding-bottom: 50px;
+        }
+        .footer-right{
+            display: flex;
+            flex-wrap: wrap;
+            @media (min-width: $tablet-screen) {
+                padding-left: 30px;
+            }
+            .footer-right__item{
+                text-align: center;
+            }
+
+            .footer-right__title{
+                color: #044DC3;
+                font-family: 'Source Sans Pro', regular;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .footer-right__text{
+                color: #000;
+                font-family: 'Source Sans Pro', regular;
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+        }
+        .social-grid{
+            margin-top: 35px;
+            .social-item{
+                margin-right: 30px;
+            }
+        }
+        .privacy-text{
+            margin-top: 24px;
+            color: #000000;
+            font-family: 'Source Sans Pro', regular;
+            font-size: 15px;
+        }
+    }
+    .bottom-part{
+        height: 60px;
+        background: #E6E6E6 0% 0% no-repeat padding-box;
     }
 }

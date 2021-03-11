@@ -5,19 +5,42 @@ import Footer from '../Components/Footer';
 import Typography from '@material-ui/core/Typography';
 import menuIcon from "../static/icon/menu-icon.svg";
 import productIcon from "../static/icon/product-icon.svg";
-import exampleProduct from "../static/img/exmaple-product.png";
 import firstInfo from "../static/img/first-info.png";
 import secondInfo from "../static/img/second-info.png";
 import thirdInfo from "../static/img/third-info.png";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import Button from "@material-ui/core/Button";
+import productItems from '../products';
 
 export default function Detail() {
-  const [category, setCategory] = React.useState("");
+  const categories = ['Tüm Kategoriler', 'Elektronik', 'Ev ve Yaşam', 'Evcil Hayvan', 'Kitap', 'Oyuncak', 'Spor', 'Çiçek (120)', 'Hediye', 'Moda, Aksesuar', 'Ofis, Kırtasiye', 'Parfüm', 'Kişisel Bakım', 'Petshop'];
+  const [category, setCategory] = React.useState("Tüm Kategoriler");
+
+  const [search, setSearch] = React.useState("");
+  const [products, setProducts] = React.useState(productItems);
+
+const handleSearch = event => {
+    setSearch(event.target.value);
+    if(event.target.value === ""){
+      setProducts(productItems);
+    } else{
+      setProducts(productItems.filter(product => product.title.includes(event.target.value)));
+    }
+};
+
+const setProductItems = (cat) => {
+  setCategory(cat);
+  if(cat === "Tüm Kategoriler"){
+    setProducts(productItems);
+  } else{
+    setProducts(productItems.filter(product => product.cat === cat));
+  }
+
+};
 
   return (
     <>
-      <Header />
+      <Header search={search} handleSearch={handleSearch}/>
       <Grid container className="blue-field">
         <Typography variant="h1" className="blue-field__text">
           ÇiçekSepeti H1
@@ -48,48 +71,52 @@ export default function Detail() {
           </Typography>
         </Grid>
         <Grid container className="category-item-grid" xs={12}>
-          {category === "Tüm Kategoriler" ? (
+        {categories.map((cat, index) => (
+          cat === category ? (
             <Grid item className="category-item">
-              <Grid item className="category-item__box" style={{background:'#044DC3'}}  onClick={() => setCategory("")}>
+              <Grid item className="category-item__box" style={{background:'#044DC3'}}  onClick={() => setProductItems("Tüm Kategoriler")}>
                 <Typography variant="body1" className="category-item__text" style={{color:'#fff'}}>
-                  Tüm Kategoriler
+                  {cat}
                 </Typography>
               </Grid>
             </Grid>
           ) : (
             <Grid item className="category-item">
-              <Grid item className="category-item__box" onClick={() => setCategory("Tüm Kategoriler")}>
+              <Grid item className="category-item__box" onClick={() => setProductItems(cat)}>
                 <Typography variant="body1" className="category-item__text">
-                  Tüm Kategoriler
+                  {cat}
                 </Typography>
               </Grid>
             </Grid>
-          )}
+          )
+          ))}
         </Grid>
         <Grid container className="product-grid">
           <img src={productIcon} alt="product-icon" className="product-icon" />
           <Typography variant="body1" className="product-title">
-            Tüm Kategoriler
+            {category}
           </Typography>
         </Grid>
         <Grid container className="product-container" xs={12}>
+        {products.map((product, index) => (
           <Grid item className="category-item">
             <Grid item className="category-item__box">
-              <img src={exampleProduct} alt="example" />
+              <img src={product.img} alt="product-img" />
               <Typography className="category-item__title">
-                Z6 Akıllı Saat Kameralı Konuşma Garantili Sim Kartlı Bluetooth
+                {product.title}
               </Typography>
               <Typography className="category-item__status">
-                Ücretsiz Teslimat
+                {product.desc}
               </Typography>
               <Typography className="category-item__price">
-                249,90 TL
+                {product.price}
               </Typography>
               <Button className="category-item__bucket">
                 Sepete Ekle
               </Button>
             </Grid>  
           </Grid>
+        ))}
         </Grid>
       </Grid>
       <Grid xs={12}>

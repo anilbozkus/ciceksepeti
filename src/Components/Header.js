@@ -7,12 +7,7 @@ import bucketIcon from "../static/icon/bucket-icon.svg";
 import { DebounceInput } from 'react-debounce-input';
 
 
-export default function Header() {
-const [search, setSearch] = React.useState("");
-
-const HandleSearch = event => {
-    setSearch(event.target.value);
-};
+export default function Header(props) {
 
   return (
     <Grid container>
@@ -27,12 +22,12 @@ const HandleSearch = event => {
               <DebounceInput
                 class="inputTypeSearch"
                 name="search"
-                value={search}
+                value={props.search}
                 placeholder="Ürün Ara"
                 className="search-input"
-                minLength={2}
+                minLength={3}
                 debounceTimeout={200}
-                onChange={HandleSearch}
+                onChange={props.handleSearch}
                 autoComplete="off"
               />
             </div>
