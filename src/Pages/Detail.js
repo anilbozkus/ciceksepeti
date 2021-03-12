@@ -24,7 +24,7 @@ const handleSearch = event => {
     if(event.target.value === ""){
       setProducts(productItems);
     } else{
-      setProducts(productItems.filter(product => product.title.includes(event.target.value)));
+      setProducts(productItems.filter(product => product.title.toLowerCase().includes(event.target.value.toLowerCase())));
     }
 };
 
