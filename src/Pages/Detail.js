@@ -20,7 +20,9 @@ export default function Detail() {
   const [products, setProducts] = React.useState(productItems);
 
 const handleSearch = event => {
-    setSearch(event.target.value);
+    if(event.target.value !== ""){
+      setSearch(event.target.value);
+    }
     if(event.target.value === ""){
       setProducts(productItems);
     } else{
