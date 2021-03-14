@@ -33,7 +33,8 @@ export default function Product(props) {
       setCount(count - 1);
       return setBucket(bucket.filter(function(product) {
         if(!this[product]) this[product] = 1
-        else if (this[product] === 1) return this[product] = 2, false
+        else if (this[product] === 1) return this[product] = 2, 
+        false
         return true;
       }, {}));
     };
