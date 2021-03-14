@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Header from '../Components/Header';
+import Product from '../Components/Product';
 import Footer from '../Components/Footer';
 import Typography from '@material-ui/core/Typography';
 import menuIcon from "../static/icon/menu-icon.svg";
@@ -15,9 +16,11 @@ import productItems from '../products';
 export default function Detail() {
   const categories = ['Tüm Kategoriler', 'Elektronik', 'Ev ve Yaşam', 'Evcil Hayvan', 'Kitap', 'Oyuncak', 'Spor', 'Çiçek (120)', 'Hediye', 'Moda, Aksesuar', 'Ofis, Kırtasiye', 'Parfüm', 'Kişisel Bakım', 'Petshop'];
   const [category, setCategory] = React.useState("Tüm Kategoriler");
-
+  const [bucket, setBucket] = React.useState([]);
   const [search, setSearch] = React.useState("");
   const [products, setProducts] = React.useState(productItems);
+  const [percentage, setPercentage] = React.useState();
+  const [price, setPrice] = React.useState();
 
 const handleSearch = event => {
     if(event.target.value !== ""){
@@ -42,7 +45,7 @@ const setProductItems = (cat) => {
 
   return (
     <>
-      <Header search={search} handleSearch={handleSearch}/>
+      <Header search={search} handleSearch={handleSearch} bucket={bucket} percentage={percentage} price={price}/>
       <Grid container className="blue-field">
         <Typography variant="h1" className="blue-field__text">
           ÇiçekSepeti H1
@@ -101,23 +104,7 @@ const setProductItems = (cat) => {
         </Grid>
         <Grid container className="product-container" xs={12}>
         {products.map((product, index) => (
-          <Grid item className="category-item">
-            <Grid item className="category-item__box">
-              <img src={product.img} alt="product-img" />
-              <Typography className="category-item__title">
-                {product.title}
-              </Typography>
-              <Typography className="category-item__status">
-                {product.desc}
-              </Typography>
-              <Typography className="category-item__price">
-                {product.price}
-              </Typography>
-              <Button className="category-item__bucket">
-                Sepete Ekle
-              </Button>
-            </Grid>  
-          </Grid>
+          <Product product={product} bucket={bucket} setBucket={setBucket} setPercentage={setPercentage} setPrice={setPrice}/>
         ))}
         </Grid>
       </Grid>
