@@ -24,11 +24,9 @@ export default function Product(props) {
     
       const percentageFuncMinus = (bucket) => {
         let percen = 0;
-        console.log(bucket,'bucket')
         bucket.forEach(element =>{
           percen = parseFloat(element.price) - percen;
         });
-        console.log(percen,'percen')
         return setPercentage((percen * 100) / 500);
       }
     
