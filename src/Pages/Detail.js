@@ -104,7 +104,7 @@ const setProductItems = (cat) => {
         </Grid>
         <Grid container className="product-container" xs={12}>
         {products.map((product, index) => (
-          <Product product={product} bucket={bucket} setBucket={setBucket} setPercentage={setPercentage} setPrice={setPrice}/>
+          <Product product={product} bucket={bucket} setBucket={setBucket} setPercentage={setPercentage} setPrice={setPrice} price={price}/>
         ))}
         </Grid>
       </Grid>

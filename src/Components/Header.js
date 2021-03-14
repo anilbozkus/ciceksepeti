@@ -68,7 +68,7 @@ export default function Header(props) {
               />{" "}
               Sepetim
             </Button>
-            {price && percentage && bucket && bucket.length > 0 && (
+            {price !== 0 && percentage !== 0 && bucket && bucket.length > 0 && (
               <Grid className="bucket-text-grid">
                 {price > 0 ? (
                   <Typography className="bucket-text">
