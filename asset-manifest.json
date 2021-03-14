@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ciceksepeti/static/css/main.66daaf47.chunk.css",
-    "main.js": "/ciceksepeti/static/js/main.57f1f6e0.chunk.js",
-    "main.js.map": "/ciceksepeti/static/js/main.57f1f6e0.chunk.js.map",
+    "main.js": "/ciceksepeti/static/js/main.224164c1.chunk.js",
+    "main.js.map": "/ciceksepeti/static/js/main.224164c1.chunk.js.map",
     "runtime-main.js": "/ciceksepeti/static/js/runtime-main.64729178.js",
     "runtime-main.js.map": "/ciceksepeti/static/js/runtime-main.64729178.js.map",
     "static/js/2.796a478b.chunk.js": "/ciceksepeti/static/js/2.796a478b.chunk.js",
@@ -45,6 +45,6 @@
     "static/js/runtime-main.64729178.js",
     "static/js/2.796a478b.chunk.js",
     "static/css/main.66daaf47.chunk.css",
-    "static/js/main.57f1f6e0.chunk.js"
+    "static/js/main.224164c1.chunk.js"
   ]
 }
