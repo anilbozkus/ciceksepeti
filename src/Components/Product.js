@@ -7,44 +7,42 @@ import plusIcon from "../static/icon/plus-icon.svg";
 
 export default function Product(props) {
     const {product, bucket, setBucket, setPrice, setPercentage} = props;
+    const [bLength, setBlength] = React.useState(bucket.length);
     const [count, setCount] = React.useState();
 
-    const addItem = product => {
-        setBucket([...bucket, product]);
-        setCount(count + 1);
-    };
-
-    const percentageFuncPlus = (bucket) => {
+    React.useEffect(() => {
+      if(bucket.length > bLength){
         let percen = 0;
-        bucket.forEach(element =>{
+        let price = 0;
+        bucket.forEach(element => {
           percen = parseFloat(element.price) + percen;
         });
-        return setPercentage((percen * 100) / 500);
-      }
-    
-      const percentageFuncMinus = (bucket) => {
-        let percen = 0;
-        bucket.forEach(element =>{
-          percen = parseFloat(element.price) - percen;
-        });
-        return setPercentage((percen * 100) / 500);
-      }
-    
-      const priceFuncPlus = (bucket) => {
-        let price = 0;
         bucket.forEach(element =>{
           price = parseFloat(element.price) + price;
         });
         setPrice(500 - price);
+        setPercentage((percen * 100) / 500);
+        setBlength(bucket.length);
       }
-    
-      const priceFuncMinus = (bucket) => {
+      else{
+        let percen = 0;
         let price = 0;
         bucket.forEach(element =>{
           price = parseFloat(element.price) - price;
         });
         setPrice(500 - price);
+        bucket.forEach(element => {
+          percen = parseFloat(element.price) - percen;
+        });
+        setPercentage((percen * 100) / 500);
+        setBlength(bucket.length);
       }
+    },[bucket])
+
+    const addItem = product => {
+        setBucket([...bucket, product]);
+        setCount(count + 1);
+    };
 
     const removeItem = (product) => {
         if(bucket.length > 1)
@@ -81,8 +79,6 @@ export default function Product(props) {
         <Grid className="category-item__minus-icon" item  onClick={() => 
             {
             removeItem(product)
-            percentageFuncMinus(bucket);
-            priceFuncMinus(bucket);
             }}>
             <Typography className="category-item__minus-icon-text">-</Typography>
         </Grid>
@@ -92,15 +88,11 @@ export default function Product(props) {
         <img src={plusIcon} alt="plus-icon" style={{ cursor:'pointer' }} onClick={() => 
         {
         addItem(product);
-        percentageFuncPlus(bucket);
-        priceFuncPlus(bucket);
         }}/>    
       </Grid>
       :
       <Button className="category-item__bucket" onClick={() => {
           setBucket([...bucket, product]);
-          percentageFuncPlus(bucket);
-          priceFuncPlus(bucket);
           setCount(1);
           }}>
         Sepete Ekle
